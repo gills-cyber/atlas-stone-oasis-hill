@@ -1,0 +1,57 @@
+appId: media.panelfox.studio
+productName: PanelFox
+copyright: PanelFox
+asar: true
+npmRebuild: false
+nodeGypRebuild: false
+electronLanguages:
+  - en-US
+  - en-GB
+compression: maximum
+directories:
+  output: dist-desktop
+  buildResources: electron
+files:
+  - electron/main.mjs
+  - electron/icon.png
+  - electron/icon.ico
+  - package.json
+  - "!**/node_modules/**"
+  - "!**/*.{md,map,ts}"
+extraMetadata:
+  name: panelfox
+  version: "1.4.0"
+  main: electron/main.mjs
+extraResources:
+  - from: desktop-web
+    to: desktop-web
+    filter:
+      - "**/*"
+      - "!__grok/**"
+      - "!downloads/**"
+  - from: electron/icon.png
+    to: icon.png
+afterPack: scripts/slim-electron-app.mjs
+win:
+  icon: electron/icon.ico
+  artifactName: PanelFox-Windows.${ext}
+  extraFiles:
+    - from: electron/README-Windows.txt
+      to: How to install on Windows.txt
+  target:
+    - target: zip
+      arch:
+        - x64
+mac:
+  icon: electron/icon.png
+  identity: null
+  category: public.app-category.graphics-design
+  artifactName: PanelFox-macOS-${arch}.${ext}
+  extraFiles:
+    - from: electron/README-macOS.txt
+      to: How to install on Mac.txt
+  target:
+    - target: zip
+      arch:
+        - x64
+        - arm64

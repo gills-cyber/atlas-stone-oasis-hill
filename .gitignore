@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-desktop/
+.vercel/
+.env
+.env.*
+*.zip
+public/downloads/*.zip
+screenshots/
+desktop-web/
+artifacts/
+qa-artifacts/
+__pycache__/
